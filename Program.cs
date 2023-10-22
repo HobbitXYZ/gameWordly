@@ -11,15 +11,18 @@
         {
             makeField();
 
-            
             while (attempt < 5)
             {
                 
                 string userWord = Console.ReadLine();
                 userWordChar = userWord.ToCharArray();
+
                 checkBox();
-                attempt++;
+                
+                
             }
+
+
             
 
         }
@@ -41,25 +44,25 @@
         {
             for(int j = 0; j < field.GetLength(0); j++)
             {   
-                field[attempt,j] = userWordChar[j];
+                field[j,attempt] = userWordChar[j];
 
                 if(exampleWord[j] == userWordChar[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
-                    System.Console.Write(" " + field[attempt,j] + " ");
+                    System.Console.Write(" " + field[j,attempt] + " ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     continue;
                 }
                 if(exampleWord.Intersect(userWordChar).Any()) //В веденом слове буква есть в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
-                    System.Console.Write(" " + field[attempt,j] + " ");
+                    System.Console.Write(" " + field[j,attempt] + " ");
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
                 else // Буквы нет
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
-                    System.Console.Write(" " + field[1,j] + " ");
+                    System.Console.Write(" " + field[j,attempt] + " ");
                     System.Console.WriteLine();
                     
                 }
@@ -67,7 +70,18 @@
 
             }
         }
-
+        static void printField()
+        {
+            for (int i = 0; i < field.GetLength(1); i++ )
+            {
+                for(int j = 0; j < field.GetLength(0); j++ )
+                {
+                    System.Console.Write(" " + field[j,i] + " ");                        
+                }
+                System.Console.WriteLine();
+            }
+        }
         
 
-    }
+        }
+    
