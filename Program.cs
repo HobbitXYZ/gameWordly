@@ -3,7 +3,7 @@
     class Program
     {
         static char[] exampleWord = {'a', 'b', 'c', 'd', 'e'}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
-        static char[,] field = new char[6, 5]; // Поле
+        static char[,] field = new char[5, 6]; // Поле
         static char[] userWordChar; // Записанное слово пользователя по буквам
         static int attempt = 0; // попытка
 
@@ -14,30 +14,32 @@
             
             while (attempt < 5)
             {
-                attempt++;
+                
                 string userWord = Console.ReadLine();
                 userWordChar = userWord.ToCharArray();
                 checkBox();
+                attempt++;
             }
+            
 
         }
 
         static void makeField()
         {
             System.Console.WriteLine("Game \"Wordly\" ");
-            for(int i = 0; i < field.GetLength(0); i++)
+            for(int i = 0; i < field.GetLength(1); i++)
             {
-                for(int j = 0; j < field.GetLength(1); j++)
+                for(int j = 0; j < field.GetLength(0); j++)
                 {
-                    field[i,j] = '*';
-                    System.Console.Write(" " + field[i,j] + " ");
+                    field[j,i] = '*'; // Инвертирование индексов для правильной работы с массивом
+                    System.Console.Write(" " + field[j,i] + " "); // Инвертирование индексов для правильной работы с массивом
                 }
             System.Console.WriteLine();
             }
         }
         static void checkBox() // Тут будет происходить проверка слова в нужной строке
         {
-            for(int j = 0; j < field.GetLength(1); j++)
+            for(int j = 0; j < field.GetLength(0); j++)
             {   
                 field[attempt,j] = userWordChar[j];
 
