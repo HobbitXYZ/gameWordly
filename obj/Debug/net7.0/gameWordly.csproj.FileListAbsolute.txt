@@ -1,0 +1,4 @@
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.AssemblyInfoInputs.cache
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.AssemblyInfo.cs
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.csproj.CoreCompileInputs.cache
