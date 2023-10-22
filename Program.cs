@@ -2,20 +2,23 @@
 
     class Program
     {
-        //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
-        static char[] exampleWord = {'a', 'b', 'c', 'd', 'e'};
-
-        // Поле
-        static char[,] field = new char[6, 5]; 
-        static char[] userWordChar;
+        static char[] exampleWord = {'a', 'b', 'c', 'd', 'e'}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
+        static char[,] field = new char[6, 5]; // Поле
+        static char[] userWordChar; // Записанное слово пользователя по буквам
+        static int attempt = 0; // попытка
 
         static void Main(string[] args)
         {
-
             makeField();
-            string userWord = Console.ReadLine();
-            userWordChar = userWord.ToCharArray();
-            checkBox();
+
+            
+            while (attempt < 5)
+            {
+                attempt++;
+                string userWord = Console.ReadLine();
+                userWordChar = userWord.ToCharArray();
+                checkBox();
+            }
 
         }
 
@@ -36,25 +39,26 @@
         {
             for(int j = 0; j < field.GetLength(1); j++)
             {   
-                field[1,j] = userWordChar[j];
+                field[attempt,j] = userWordChar[j];
 
                 if(exampleWord[j] == userWordChar[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
-                    System.Console.Write(" " + field[1,j] + " ");
+                    System.Console.Write(" " + field[attempt,j] + " ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     continue;
                 }
                 if(exampleWord.Intersect(userWordChar).Any()) //В веденом слове буква есть в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
-                    System.Console.Write(" " + field[1,j] + " ");
+                    System.Console.Write(" " + field[attempt,j] + " ");
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
                 else // Буквы нет
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                     System.Console.Write(" " + field[1,j] + " ");
+                    System.Console.WriteLine();
                     
                 }
                 
