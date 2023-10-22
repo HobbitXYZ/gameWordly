@@ -2,3 +2,13 @@ C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\g
 C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.AssemblyInfoInputs.cache
 C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.AssemblyInfo.cs
 C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.csproj.CoreCompileInputs.cache
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\bin\Debug\net7.0\gameWordly.exe
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\bin\Debug\net7.0\gameWordly.deps.json
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\bin\Debug\net7.0\gameWordly.runtimeconfig.json
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\bin\Debug\net7.0\gameWordly.dll
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\bin\Debug\net7.0\gameWordly.pdb
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.dll
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\refint\gameWordly.dll
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.pdb
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\gameWordly.genruntimeconfig.cache
+C:\Users\oleg4\OneDrive\Desktop\Prog\С#\GitWordly\gameWordly\obj\Debug\net7.0\ref\gameWordly.dll
