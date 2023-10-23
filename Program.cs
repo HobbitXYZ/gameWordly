@@ -27,20 +27,19 @@ using System.Linq;
                 {   
                     if(exampleWord[i] == userWordChar[i])
                     win++;
-
-                    if(win >= 5)
-                    {
-                        System.Console.WriteLine("\nYou win");
-                        printField();
-                        break;
-                        
-                    }
-                    if(attempt == 5)
-                    {
-                        System.Console.WriteLine("\n");
-                        printField();
-                        System.Console.WriteLine("Ты проиграл");
-                    }
+                }
+                if(win >= 5)
+                {
+                    System.Console.WriteLine("\nYou win");
+                    printField();
+                    break;
+                    
+                }
+                if(attempt == 5)
+                {
+                    System.Console.WriteLine("\n");
+                    printField();
+                    System.Console.WriteLine("Ты проиграл");
                 }
                 
                 attempt++;
