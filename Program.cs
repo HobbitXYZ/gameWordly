@@ -17,7 +17,10 @@ using System.Linq;
             while (attempt < 6)
             {
                 string userWord = Console.ReadLine();
-                userWordChar = userWord.ToCharArray();
+                if (userWord != null)
+                {
+                    userWordChar = userWord.ToCharArray();
+                }
 
                 checkBox();
                 attempt++;
