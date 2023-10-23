@@ -23,7 +23,26 @@ using System.Linq;
                 }
 
                 checkBox();
-                winOrLose();
+                for(int i = 0; i < field.GetLength(0); i++)
+                {   
+                    if(exampleWord[i] == userWordChar[i])
+                    win++;
+
+                    if(win >= 5)
+                    {
+                        System.Console.WriteLine("\nYou win");
+                        printField();
+                        break;
+                        
+                    }
+                    if(attempt == 5)
+                    {
+                        System.Console.WriteLine("\n");
+                        printField();
+                        System.Console.WriteLine("Ты проиграл");
+                    }
+                }
+                
                 attempt++;
             }  
         }
@@ -81,18 +100,25 @@ using System.Linq;
         }  
         static void winOrLose()
         {
+            checkBox();
+            for(int i = 0; i < field.GetLength(0); i++)
+            {   
+                if(exampleWord[i] == userWordChar[i])
+                win++;
 
-            System.Console.WriteLine(win);
-            if(win >= 4)
-            {
-                System.Console.WriteLine("\nYou win");
-            
-            }
-            if(attempt == 5)
-            {
-                System.Console.WriteLine("\n");
-                printField();
-                System.Console.WriteLine("Ты проиграл");
+                if(win >= 5)
+                {
+                    System.Console.WriteLine("\nYou win");
+                    printField();
+                    break;
+                    
+                }
+                if(attempt == 5)
+                {
+                    System.Console.WriteLine("\n");
+                    printField();
+                    System.Console.WriteLine("Ты проиграл");
+                }
             }
         }  
     }
