@@ -18,6 +18,7 @@ using System.Linq;
                 checkBox();
                 attempt++;
             }
+            System.Console.WriteLine();
             printField();
         }
 
@@ -39,16 +40,15 @@ using System.Linq;
             for(int j = 0; j < field.GetLength(0); j++)
             {   
                 field[j,attempt] = userWordChar[j];
-                bool tf = exampleWord.Intersect(userWordChar).Any();
-
-                if(exampleWord[j] == userWordChar[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
+                
+                if(userWordChar[j] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
                     System.Console.Write(" " + field[j,attempt] + " ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     continue;
                 }
-                if(userWordChar.Contains(exampleWord[j])) //В веденом слове буква есть в загаданном 
+                if(userWordChar.Contains(exampleWord[j])) //Буква в веденом слове буква есть в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
                     System.Console.Write(" " + field[j,attempt] + " ");
