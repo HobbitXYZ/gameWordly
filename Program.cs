@@ -23,6 +23,8 @@ using System.Linq;
                 }
 
                 checkBox();
+
+                win = 0;
                 for(int i = 0; i < field.GetLength(0); i++)
                 {   
                     if(exampleWord[i] == userWordChar[i])
@@ -30,6 +32,7 @@ using System.Linq;
                 }
                 if(win >= 5)
                 {
+                    Console.Clear();
                     System.Console.WriteLine("\nYou win");
                     printField();
                     break;
@@ -37,6 +40,7 @@ using System.Linq;
                 }
                 if(attempt == 5)
                 {
+                    Console.Clear();
                     System.Console.WriteLine("\n");
                     printField();
                     System.Console.WriteLine("Ты проиграл");
