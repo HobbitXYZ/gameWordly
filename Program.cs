@@ -23,6 +23,7 @@ using System.Linq;
                 }
 
                 checkBox();
+                printField();
 
                 win = 0;
                 for(int i = 0; i < field.GetLength(0); i++)
@@ -69,25 +70,25 @@ using System.Linq;
             {   
                 field[j,attempt] = userWordChar[j];
                 
-                if(userWordChar[j] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
-                {
-                    Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
-                    System.Console.Write(" " + field[j,attempt] + " ");
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    continue;
-                }
-                if (exampleWord.Contains(userWordChar[j])) //Буква в веденом слове буква есть в загаданном 
-                {
-                    Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
-                    System.Console.Write(" " + field[j,attempt] + " ");
-                    Console.BackgroundColor = ConsoleColor.Black;
-                }
-                else // Буквы нет
-                {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    System.Console.Write(" " + field[j,attempt] + " ");
+                // if(userWordChar[j] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
+                // {
+                //     Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
+                //     System.Console.Write(" " + field[j,attempt] + " ");
+                //     Console.BackgroundColor = ConsoleColor.Black;
+                //     continue;
+                // }
+                // if (exampleWord.Contains(userWordChar[j])) //Буква в веденом слове буква есть в загаданном 
+                // {
+                //     Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
+                //     System.Console.Write(" " + field[j,attempt] + " ");
+                //     Console.BackgroundColor = ConsoleColor.Black;
+                // }
+                // else // Буквы нет
+                // {
+                //     Console.BackgroundColor = ConsoleColor.Black;
+                //     System.Console.Write(" " + field[j,attempt] + " ");
                                         
-                }
+                // }
             }
         }
         static void printField()
@@ -96,7 +97,27 @@ using System.Linq;
             {
                 for(int j = 0; j < field.GetLength(0); j++ )
                 {
-                    System.Console.Write(" " + field[j,i] + " ");                        
+                
+                    if(field[j,i] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
+                    {
+                        Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
+                        System.Console.Write(" " + field[j,i] + " ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        continue;
+                    }
+                    if (exampleWord.Contains(field[j,i])) //Буква в веденом слове буква есть в загаданном 
+                    {
+                        Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
+                        System.Console.Write(" " + field[j,i] + " ");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+                    else // Буквы нет
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        System.Console.Write(" " + field[j,i] + " ");
+                                            
+                    }
+
                 }
                 System.Console.WriteLine();
             }
