@@ -41,14 +41,14 @@ using System.Linq;
                     Console.ReadLine();
                     break;
 
-            }
+                }
                 if(attempt == 5)
                 {
                     Console.Clear();;
                     printField();
                     System.Console.WriteLine("Ты проиграл!");
                     Console.ReadLine();
-            }
+                }
                 
                 attempt++;
             }  
@@ -149,6 +149,5 @@ using System.Linq;
                     System.Console.WriteLine("Ты проиграл");
                 }
             }
-        }  
+        }   
     }
-    
