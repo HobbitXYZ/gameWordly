@@ -1,15 +1,19 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 
     class Program
     {
         static char[] exampleWord = {'a', 'b', 'c', 'd', 'e'}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
         static char[,] field = new char[5, 6]; // Поле
-        static char[] userWordChar; // Записанное слово пользователя по буквам
+        static char[] userWordChar = {' ', ' ', ' ', ' ', ' '}; // Записанное слово пользователя по буквам
         static int attempt = 0; // попытка
 
         static void Main(string[] args)
         {
+            int win = 0;
+            makeField();
+
             while (attempt < 6)
             {
                 string userWord = Console.ReadLine();
@@ -17,9 +21,20 @@ using System.Linq;
 
                 checkBox();
                 attempt++;
+
+                for (int i = 0; i < field.GetLength(0); i++ )
+                {
+                    if(field[i,attempt] == exampleWord[i])
+                        win++;
+                }
+                if(win >= 4)
+                    System.Console.WriteLine("You win");
+
             }
-            System.Console.WriteLine();
+
+            System.Console.WriteLine("\n");
             printField();
+            System.Console.WriteLine("Ты проиграл");
         }
 
         static void makeField()
@@ -48,7 +63,7 @@ using System.Linq;
                     Console.BackgroundColor = ConsoleColor.Black;
                     continue;
                 }
-                if(userWordChar.Contains(exampleWord[j])) //Буква в веденом слове буква есть в загаданном 
+                if (exampleWord.Contains(userWordChar[j])) //Буква в веденом слове буква есть в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
                     System.Console.Write(" " + field[j,attempt] + " ");
@@ -72,6 +87,6 @@ using System.Linq;
                 }
                 System.Console.WriteLine();
             }
-        }
+        }    
     }
     
