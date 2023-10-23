@@ -18,7 +18,7 @@ using System.Linq;
                 checkBox();
                 attempt++;
             }
-            
+            printField();
         }
 
         static void makeField()
@@ -60,8 +60,6 @@ using System.Linq;
                     System.Console.Write(" " + field[j,attempt] + " ");
                                         
                 }
-                
-
             }
         }
         static void printField()
@@ -75,7 +73,5 @@ using System.Linq;
                 System.Console.WriteLine();
             }
         }
-        
-
     }
     
