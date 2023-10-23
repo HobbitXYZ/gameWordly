@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
     class Program
     {
@@ -9,22 +10,15 @@
 
         static void Main(string[] args)
         {
-            makeField();
-
-            while (attempt < 5)
+            while (attempt < 6)
             {
-                
                 string userWord = Console.ReadLine();
                 userWordChar = userWord.ToCharArray();
 
                 checkBox();
-                
-                
+                attempt++;
             }
-
-
             
-
         }
 
         static void makeField()
@@ -45,6 +39,7 @@
             for(int j = 0; j < field.GetLength(0); j++)
             {   
                 field[j,attempt] = userWordChar[j];
+                bool tf = exampleWord.Intersect(userWordChar).Any();
 
                 if(exampleWord[j] == userWordChar[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                 {
@@ -53,7 +48,7 @@
                     Console.BackgroundColor = ConsoleColor.Black;
                     continue;
                 }
-                if(exampleWord.Intersect(userWordChar).Any()) //В веденом слове буква есть в загаданном 
+                if(userWordChar.Contains(exampleWord[j])) //В веденом слове буква есть в загаданном 
                 {
                     Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
                     System.Console.Write(" " + field[j,attempt] + " ");
@@ -63,8 +58,7 @@
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
                     System.Console.Write(" " + field[j,attempt] + " ");
-                    System.Console.WriteLine();
-                    
+                                        
                 }
                 
 
@@ -83,5 +77,5 @@
         }
         
 
-        }
+    }
     
