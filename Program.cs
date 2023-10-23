@@ -21,9 +21,11 @@ using System.Linq;
                 {
                     userWordChar = userWord.ToCharArray();
                 }
+                Console.Clear();
 
                 checkBox();
                 printField();
+               
 
                 win = 0;
                 for(int i = 0; i < field.GetLength(0); i++)
@@ -34,18 +36,19 @@ using System.Linq;
                 if(win >= 5)
                 {
                     Console.Clear();
-                    System.Console.WriteLine("\nYou win");
+                    System.Console.WriteLine("Ты победил!");
                     printField();
+                    Console.ReadLine();
                     break;
-                    
-                }
+
+            }
                 if(attempt == 5)
                 {
-                    Console.Clear();
-                    System.Console.WriteLine("\n");
+                    Console.Clear();;
                     printField();
-                    System.Console.WriteLine("Ты проиграл");
-                }
+                    System.Console.WriteLine("Ты проиграл!");
+                    Console.ReadLine();
+            }
                 
                 attempt++;
             }  
@@ -101,23 +104,25 @@ using System.Linq;
                     if(field[j,i] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
+                        Console.ForegroundColor = ConsoleColor.Black;
                         System.Console.Write(" " + field[j,i] + " ");
                         Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
                         continue;
                     }
                     if (exampleWord.Contains(field[j,i])) //Буква в веденом слове буква есть в загаданном 
                     {
+                        Console.ForegroundColor = ConsoleColor.Black;
                         Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
                         System.Console.Write(" " + field[j,i] + " ");
                         Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else // Буквы нет
                     {
                         Console.BackgroundColor = ConsoleColor.Black;
-                        System.Console.Write(" " + field[j,i] + " ");
-                                            
+                        System.Console.Write(" " + field[j,i] + " ");                       
                     }
-
                 }
                 System.Console.WriteLine();
             }
