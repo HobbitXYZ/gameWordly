@@ -16,14 +16,16 @@ using System.Linq;
 
             while (attempt < 6)
             {  
-                string userWord;             
+                string userWord;
+                bool isValidInput = false;             
                 do
                 {
                     System.Console.Write("Введите слово: ");
                     userWord = Console.ReadLine();
                     userWordChar = userWord.ToCharArray();
+                    isValidInput = userWord.All(char.IsLetter);
                 }
-                while(userWordChar.Length != 5 && userWordChar.Any(char.IsLetter));
+                while(userWordChar.Length != 5 && isValidInput != true);
 
                 
                 
