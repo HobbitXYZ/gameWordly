@@ -15,12 +15,18 @@ using System.Linq;
             makeField();
 
             while (attempt < 6)
-            {
-                string userWord = Console.ReadLine();
-                if (userWord != null)
+            {  
+                string userWord;             
+                do
                 {
+                    System.Console.Write("Введите слово: ");
+                    userWord = Console.ReadLine();
                     userWordChar = userWord.ToCharArray();
                 }
+                while(userWordChar.Length != 5 && userWordChar.Any(char.IsLetter));
+
+                
+                
                 Console.Clear();
 
                 checkBox();
@@ -72,26 +78,6 @@ using System.Linq;
             for(int j = 0; j < field.GetLength(0); j++)
             {   
                 field[j,attempt] = userWordChar[j];
-                
-                // if(userWordChar[j] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
-                // {
-                //     Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
-                //     System.Console.Write(" " + field[j,attempt] + " ");
-                //     Console.BackgroundColor = ConsoleColor.Black;
-                //     continue;
-                // }
-                // if (exampleWord.Contains(userWordChar[j])) //Буква в веденом слове буква есть в загаданном 
-                // {
-                //     Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
-                //     System.Console.Write(" " + field[j,attempt] + " ");
-                //     Console.BackgroundColor = ConsoleColor.Black;
-                // }
-                // else // Буквы нет
-                // {
-                //     Console.BackgroundColor = ConsoleColor.Black;
-                //     System.Console.Write(" " + field[j,attempt] + " ");
-                                        
-                // }
             }
         }
         static void printField()
@@ -127,27 +113,4 @@ using System.Linq;
                 System.Console.WriteLine();
             }
         }  
-        static void winOrLose()
-        {
-            checkBox();
-            for(int i = 0; i < field.GetLength(0); i++)
-            {   
-                if(exampleWord[i] == userWordChar[i])
-                win++;
-
-                if(win >= 5)
-                {
-                    System.Console.WriteLine("\nYou win");
-                    printField();
-                    break;
-                    
-                }
-                if(attempt == 5)
-                {
-                    System.Console.WriteLine("\n");
-                    printField();
-                    System.Console.WriteLine("Ты проиграл");
-                }
-            }
-        }   
     }
