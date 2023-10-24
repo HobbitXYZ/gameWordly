@@ -106,7 +106,7 @@ using System.ComponentModel;
                 System.Console.WriteLine();
             }
         }  
-        static void validity()
+        static void validity() // Проверка на ввод
         {
             bool isValidInput = false;
             string userWord;             
