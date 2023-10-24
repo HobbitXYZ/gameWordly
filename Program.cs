@@ -17,35 +17,8 @@ using System.ComponentModel;
 
             while (attempt < 6)
             {  
-                string userWord;
-                bool isValidInput = true;             
-                do
-                {
-                    System.Console.Write("Введите слово: ");
-                    userWord = Console.ReadLine();
-                    userWordChar = userWord.ToCharArray();
-                    
-                    if (userWord.Length == 5)
-                    {
-                        // Проверяем каждый символ в строке на то, что он является буквой
-                        foreach(char c in userWordChar)
-                        {
-                            if (char.IsLetter(c))
-                            {
-                                isValidInput = false; // Если найден не-буквенный символ, считаем ввод некорректным
-                                continue; // Прерываем цикл, так как уже нашли некорректный символ
-                            }
-                        }
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("Введено некорректное слово. Пожалуйста, введите слово из 5 букв.");
-                        isValidInput = false;
-                    }
-                }
-                while(!isValidInput);
-
-                 
+                
+                validity();
                 
                 Console.Clear();
 
@@ -62,15 +35,15 @@ using System.ComponentModel;
                 if(win >= 5)
                 {
                     Console.Clear();
-                    System.Console.WriteLine("Ты победил!");
                     printField();
+                    System.Console.WriteLine("Ты победил!");
                     Console.ReadLine();
                     break;
 
                 }
                 if(attempt == 5)
                 {
-                    Console.Clear();;
+                    Console.Clear();
                     printField();
                     System.Console.WriteLine("Ты проиграл!");
                     Console.ReadLine();
@@ -133,4 +106,35 @@ using System.ComponentModel;
                 System.Console.WriteLine();
             }
         }  
+        static void validity()
+        {
+            bool isValidInput = false;
+            string userWord;             
+            do
+            {
+                isValidInput = true; // Чтобы зайти в цикл
+                System.Console.Write("Введите слово: ");
+                userWord = Console.ReadLine();
+                userWordChar = userWord.ToCharArray();
+                
+                if (userWord.Length == 5)
+                {
+                    // Проверяем каждый символ в строке на то, что он является буквой
+                    foreach(char c in userWordChar)
+                    {
+                        if (char.IsLetter(c))
+                        {
+                            isValidInput = false; // Если найден не-буквенный символ, считаем ввод некорректным
+                            break; // а нам одного достаточно АХАХХАХАХАХХА D;
+                        }
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("Введено некорректное слово. Пожалуйста, введите слово из 5 букв.");
+                    isValidInput = false;
+                }
+            }
+            while(!isValidInput);
+        }
     }
