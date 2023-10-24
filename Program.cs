@@ -1,6 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
+using System.ComponentModel;
+
 
     class Program
     {
@@ -23,11 +24,29 @@ using System.Linq;
                     System.Console.Write("Введите слово: ");
                     userWord = Console.ReadLine();
                     userWordChar = userWord.ToCharArray();
-                    isValidInput = userWord.All(char.IsLetter);
+                    
+                    if (userWord.Length == 5)
+                    {
+                        // Проверяем каждый символ в строке на то, что он является буквой
+                        foreach(char c in userWordChar)
+                        {
+                            if (!char.IsLetter(c))
+                            {
+                                isValidInput = false; // Если найден не-буквенный символ, считаем ввод некорректным
+                                break; // Прерываем цикл, так как уже нашли некорректный символ
+                            }
+                            else
+                                System.Console.WriteLine("Вы ввели не слово. Пожалуйста, ведите слово");
+                        }
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Введено некорректное слово. Пожалуйста, введите слово из 5 букв.");
+                    }
                 }
-                while(userWordChar.Length != 5 && isValidInput != true);
+                while(userWordChar.Length != 5 && isValidInput);
 
-                
+                 
                 
                 Console.Clear();
 
