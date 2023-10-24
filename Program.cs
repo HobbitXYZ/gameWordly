@@ -5,7 +5,7 @@ using System.ComponentModel;
 
     class Program
     {
-        static char[] exampleWord = {'a', 'b', 'c', 'd', 'e'}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
+        static char[] exampleWord = {'L', 'E', 'V', 'O', 'N'}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
         static char[,] field = new char[5, 6]; // Поле
         static char[] userWordChar = {' ', ' ', ' ', ' ', ' '}; // Записанное слово пользователя по буквам
         static int attempt = 0; // попытка
@@ -115,6 +115,7 @@ using System.ComponentModel;
                 isValidInput = true; // Чтобы зайти в цикл
                 System.Console.Write("Введите слово: ");
                 userWord = Console.ReadLine();
+                userWord = userWord.ToUpper();
                 userWordChar = userWord.ToCharArray();
                 
                 if (userWord.Length == 5)
@@ -122,12 +123,13 @@ using System.ComponentModel;
                     // Проверяем каждый символ в строке на то, что он является буквой
                     foreach(char c in userWordChar)
                     {
-                        if (char.IsLetter(c))
+                        if (!char.IsLetter(c))
                         {
                             isValidInput = false; // Если найден не-буквенный символ, считаем ввод некорректным
                             break; // а нам одного достаточно АХАХХАХАХАХХА D;
                         }
                     }
+                    System.Console.WriteLine("Введено некорректное слово. Пожалуйста, введите слово из 5 букв.");
                 }
                 else
                 {
