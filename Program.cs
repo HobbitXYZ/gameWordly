@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.ComponentModel;
+using System.IO;
 
 
     class Program
@@ -13,8 +14,7 @@ using System.ComponentModel;
 
         static void Main(string[] args)
         {
-            
-            User();
+            Menu();
         }
 
         static void makeField()
@@ -144,4 +144,30 @@ using System.ComponentModel;
                 attempt++;
             } 
         }
+        static void Menu()
+        {
+
+            System.Console.WriteLine("Выберите действие: \n" +
+                "(0) Посмотреть таблицу результатов. \n" +
+                "(1) Новая игра. \n" +
+                "(2) Продолжить игру. \n" +
+                "Выш выбор - "
+                );
+            
+            string filePath = @"C:\Users\oleg4\OneDrive\Desktop\Prog\С#\ConsoleApp1\ConsoleApp1\Dictionary.txt"; // словарь
+            string fileContent = File.ReadAllText(filePath); 
+            char[] delimiters = new char[] { ' ', ','}; // разделители слов
+            string[] words = fileContent.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            
+
+            var fiveLetterWords = words.Where(word => word.Length == 5).ToList();
+            Random random = new Random();
+            int randomIndex = random.Next(0, fiveLetterWords.Count);
+
+            string guessWord = fiveLetterWords[randomIndex];
+            System.Console.WriteLine(guessWord);
+
+            
+        }
+        
     }
