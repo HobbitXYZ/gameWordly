@@ -154,14 +154,12 @@ using System.IO;
                 "Выш выбор - "
                 );
             
-            string filePath = @"C:\Users\oleg4\OneDrive\Desktop\Prog\С#\ConsoleApp1\ConsoleApp1\Dictionary.txt"; // словарь
-            string fileContent = File.ReadAllText(filePath); 
-            char[] delimiters = new char[] { ' ', ','}; // разделители слов
-            string[] words = fileContent.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            string fileContent = File.ReadAllText(@".\Dictionary.txt"); // словарь
+            string[] words = fileContent.Split(',', StringSplitOptions.RemoveEmptyEntries);
             
-
             var fiveLetterWords = words.Where(word => word.Length == 5).ToList();
             Random random = new Random();
+            System.Console.WriteLine(fiveLetterWords.Count());
             int randomIndex = random.Next(0, fiveLetterWords.Count);
 
             string guessWord = fiveLetterWords[randomIndex];
