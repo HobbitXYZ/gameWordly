@@ -13,44 +13,8 @@ using System.ComponentModel;
 
         static void Main(string[] args)
         {
-            makeField();
-
-            while (attempt < 6)
-            {  
-                
-                validity();
-                
-                Console.Clear();
-
-                checkBox();
-                printField();
-               
-
-                win = 0;
-                for(int i = 0; i < field.GetLength(0); i++)
-                {   
-                    if(exampleWord[i] == userWordChar[i])
-                    win++;
-                }
-                if(win >= 5)
-                {
-                    Console.Clear();
-                    printField();
-                    System.Console.WriteLine("Ты победил!");
-                    Console.ReadLine();
-                    break;
-
-                }
-                if(attempt == 5)
-                {
-                    Console.Clear();
-                    printField();
-                    System.Console.WriteLine("Ты проиграл!");
-                    Console.ReadLine();
-                }
-                
-                attempt++;
-            }  
+            
+            User();
         }
 
         static void makeField()
@@ -138,5 +102,46 @@ using System.ComponentModel;
                 }
             }
             while(!isValidInput);
+        }
+        static void User()
+        {
+            makeField();
+
+            while (attempt < 6)
+            {  
+                
+                validity();
+                
+                Console.Clear();
+
+                checkBox();
+                printField();
+               
+
+                win = 0;
+                for(int i = 0; i < field.GetLength(0); i++)
+                {   
+                    if(exampleWord[i] == userWordChar[i])
+                    win++;
+                }
+                if(win >= 5)
+                {
+                    Console.Clear();
+                    printField();
+                    System.Console.WriteLine("Ты победил!");
+                    Console.ReadLine();
+                    break;
+
+                }
+                if(attempt == 5)
+                {
+                    Console.Clear();
+                    printField();
+                    System.Console.WriteLine("Ты проиграл!");
+                    Console.ReadLine();
+                }
+                
+                attempt++;
+            } 
         }
     }
