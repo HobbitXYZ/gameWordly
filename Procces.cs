@@ -14,6 +14,7 @@ using System.IO;
             static char[] userWordChar = {' ', ' ', ' ', ' ', ' '}; // Записанное слово пользователя по буквам
             static int attempt = 0; // попытка
             static int win = 0; //Проверка на победу
+            
             static void makeField() // Печать пустого поля
             {
                 do
@@ -157,14 +158,14 @@ using System.IO;
                 attempt++;
             } 
         } 
-        public string GetNickname()
-        {
-            return nikname;
-        }
-        public int GetScore()
-        {
-            return score;
-        }
+            public string GetNickname()
+            {
+                return nikname;
+            }
+            public int GetScore()
+            {
+                return score;
+            }
 
         }  
     }
