@@ -18,7 +18,7 @@ using System.IO;
             User();
         }
 
-        static void makeField()
+        static void makeField() // Печать пустого поля
         {
             System.Console.WriteLine("Game \"Wordly\" ");
             for(int i = 0; i < field.GetLength(1); i++)
@@ -31,7 +31,7 @@ using System.IO;
             System.Console.WriteLine();
             }
         }
-        static void guessWord()
+        static void guessWord() // Выбор загадываемого слова
         {
             System.Console.WriteLine("Выберите действие: \n" +
                 "(0) Посмотреть таблицу результатов. \n" +
@@ -49,7 +49,7 @@ using System.IO;
             string guessWordStr = words[randomIndex];
             exampleWord = guessWordStr.ToCharArray();  
         }
-        static void printField()
+        static void CheckBox() // Присвоение буквы и Проверка буквы
         {
             for (int i = 0; i < field.GetLength(1); i++ )
             {
@@ -116,7 +116,7 @@ using System.IO;
             }
             while(!isValidInput);
         }
-        static void User()
+        static void User() // Условие победы
         {
             makeField();
 
@@ -128,7 +128,7 @@ using System.IO;
                 Console.Clear();
 
                 
-                printField();
+                CheckBox();
                
 
                 win = 0;
@@ -140,7 +140,7 @@ using System.IO;
                 if(win >= 5) // победа
                 {
                     Console.Clear();
-                    printField();
+                    CheckBox();
                     System.Console.WriteLine("Ты победил!");
                     Console.ReadLine();
                     break;
@@ -149,7 +149,7 @@ using System.IO;
                 if(attempt == 5) // проигрыш
                 {
                     Console.Clear();
-                    printField();
+                    CheckBox();
                     System.Console.WriteLine("Ты проиграл!");
                     Console.ReadLine();
                 }
