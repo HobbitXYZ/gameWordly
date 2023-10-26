@@ -14,7 +14,8 @@ using System.IO;
 
         static void Main(string[] args)
         {
-            Menu();
+            guessWord();
+            User();
         }
 
         static void makeField()
@@ -29,6 +30,24 @@ using System.IO;
                 }
             System.Console.WriteLine();
             }
+        }
+        static void guessWord()
+        {
+            System.Console.WriteLine("Выберите действие: \n" +
+                "(0) Посмотреть таблицу результатов. \n" +
+                "(1) Новая игра. \n" +
+                "(2) Продолжить игру. \n" +
+                "Выш выбор - "
+                );
+            
+            string fileContent = File.ReadAllText(@".\Dictionary.txt"); // словарь
+            string[] words = fileContent.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            
+            Random random = new Random();
+            int randomIndex = random.Next(0, words.Length);
+
+            string guessWordStr = words[randomIndex];
+            exampleWord = guessWordStr.ToCharArray();  
         }
         static void checkBox() // Тут будет происходить проверка слова в нужной строке
         {
@@ -143,29 +162,6 @@ using System.IO;
                 
                 attempt++;
             } 
-        }
-        static void Menu()
-        {
-
-            System.Console.WriteLine("Выберите действие: \n" +
-                "(0) Посмотреть таблицу результатов. \n" +
-                "(1) Новая игра. \n" +
-                "(2) Продолжить игру. \n" +
-                "Выш выбор - "
-                );
-            
-            string fileContent = File.ReadAllText(@".\Dictionary.txt"); // словарь
-            string[] words = fileContent.Split(',', StringSplitOptions.RemoveEmptyEntries);
-            
-            var fiveLetterWords = words.Where(word => word.Length == 5).ToList();
-            Random random = new Random();
-            System.Console.WriteLine(fiveLetterWords.Count());
-            int randomIndex = random.Next(0, fiveLetterWords.Count);
-
-            string guessWord = fiveLetterWords[randomIndex];
-            System.Console.WriteLine(guessWord);
-
-            
         }
         
     }
