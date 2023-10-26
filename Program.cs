@@ -3,10 +3,9 @@ using System.Linq;
 using System.ComponentModel;
 using System.IO;
 
-
     class Program
     {
-        static char[] exampleWord = {'L', 'E', 'V', 'O', 'N'}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
+        static char[] exampleWord = {' ', ' ', ' ', ' ', ' '}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
         static char[,] field = new char[5, 6]; // Поле
         static char[] userWordChar = {' ', ' ', ' ', ' ', ' '}; // Записанное слово пользователя по буквам
         static int attempt = 0; // попытка
@@ -14,6 +13,7 @@ using System.IO;
 
         static void Main(string[] args)
         {
+            
             guessWord();
             User();
         }
@@ -49,20 +49,14 @@ using System.IO;
             string guessWordStr = words[randomIndex];
             exampleWord = guessWordStr.ToCharArray();  
         }
-        static void checkBox() // Тут будет происходить проверка слова в нужной строке
-        {
-            for(int j = 0; j < field.GetLength(0); j++)
-            {   
-                field[j,attempt] = userWordChar[j];
-            }
-        }
         static void printField()
         {
             for (int i = 0; i < field.GetLength(1); i++ )
             {
                 for(int j = 0; j < field.GetLength(0); j++ )
                 {
-                
+                    field[j,attempt] = userWordChar[j]; // Вытащил из рудимента старого checkBox() присвоение элемента
+
                     if(field[j,i] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                     {
                         Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
@@ -133,7 +127,7 @@ using System.IO;
                 
                 Console.Clear();
 
-                checkBox();
+                
                 printField();
                
 
@@ -143,7 +137,7 @@ using System.IO;
                     if(exampleWord[i] == userWordChar[i])
                     win++;
                 }
-                if(win >= 5)
+                if(win >= 5) // победа
                 {
                     Console.Clear();
                     printField();
@@ -152,7 +146,7 @@ using System.IO;
                     break;
 
                 }
-                if(attempt == 5)
+                if(attempt == 5) // проигрыш
                 {
                     Console.Clear();
                     printField();
