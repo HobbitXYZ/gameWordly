@@ -7,6 +7,8 @@ using System.IO;
     {
         class Biz
         {
+            static string nikname;
+            static int score = 0;
             static char[] exampleWord = {' ', ' ', ' ', ' ', ' '}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
             static char[,] field = new char[5, 6]; // Поле
             static char[] userWordChar = {' ', ' ', ' ', ' ', ' '}; // Записанное слово пользователя по буквам
@@ -14,7 +16,17 @@ using System.IO;
             static int win = 0; //Проверка на победу
             static void makeField() // Печать пустого поля
             {
-                System.Console.WriteLine("Game \"Wordly\" ");
+                do
+                {
+                    System.Console.Write("Введите ник - ");
+                    nikname = Console.ReadLine();
+                } 
+                while (string.IsNullOrEmpty(nikname));
+
+                Console.Clear();
+
+
+                System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");
                 for(int i = 0; i < field.GetLength(1); i++)
                 {
                     for(int j = 0; j < field.GetLength(0); j++)
@@ -128,6 +140,7 @@ using System.IO;
                 {
                     Console.Clear();
                     CheckBox();
+                    score++;
                     System.Console.WriteLine("Ты победил!");
                     Console.ReadLine();
                     break;
@@ -144,5 +157,14 @@ using System.IO;
                 attempt++;
             } 
         } 
+        public string GetNickname()
+        {
+            return nikname;
+        }
+        public int GetScore()
+        {
+            return score;
+        }
+
         }  
     }
