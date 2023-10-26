@@ -10,17 +10,33 @@ namespace Users
     {
         static void Main(string[] args)
         { 
-            System.Console.WriteLine("Выберите действие: \n" +
+            Biz biz = new Biz();
+            int action = 0;
+
+            do
+            {
+                System.Console.Write("Выберите действие: \n" +
                 "(0) Посмотреть таблицу результатов. \n" +
                 "(1) Новая игра. \n" +
                 "(2) Продолжить игру. \n" +
-                "Выш выбор - "
-                );
-            
+                "Выш выбор - ");
+                action = int.Parse(Console.ReadLine());
 
-            Biz biz = new Biz();
-            biz.guessWord();
-            biz.User();
+                switch(action)
+                {
+                    case 0:
+                    break;
+
+                    case 1:
+                    biz.guessWord();
+                    biz.User();
+                    break;
+
+                    case 3:
+                    break;
+                }   
+            }
+            while (action > 3);   
         } 
     }
 }
