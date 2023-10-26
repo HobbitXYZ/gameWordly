@@ -10,11 +10,18 @@ namespace data
         {
             Biz biz = new Biz();
             string nikname = biz.GetNickname();
+            int score = biz.GetScore();
 
-            using (StreamWriter writer = new StreamWriter(@".\ScoreTable.txt"))
+
+            using (StreamWriter writer = new StreamWriter(@".\ScoreTable.txt", true))
             {
-                writer.WriteLine(nikname);
+                writer.WriteLine($"{nikname},{score}");
+                writer.Close();
             }
+        }
+        public void SqureAmmount()
+        {
+            
         }
     }
 }

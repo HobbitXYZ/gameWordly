@@ -12,7 +12,10 @@ namespace Users
         static void Main(string[] args)
         { 
             Biz biz = new Biz();
+            GameState gm = new GameState();
             int action = 0;
+
+           
 
             do
             {
@@ -31,6 +34,7 @@ namespace Users
                     case 1:
                     biz.guessWord();
                     biz.User();
+                    gm.ScoreTable();
                     break;
 
                     case 3:
