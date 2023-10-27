@@ -17,17 +17,6 @@ using System.IO;
 
             static void makeField() // Печать пустого поля
             {
-                do
-                {
-                    System.Console.Write("Введите ник - ");
-                    nikname = Console.ReadLine();
-                } 
-                while (string.IsNullOrEmpty(nikname));
-
-                Console.Clear();
-
-
-                System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");
                 for(int i = 0; i < field.GetLength(1); i++)
                 {
                     for(int j = 0; j < field.GetLength(0); j++)
@@ -121,42 +110,53 @@ using System.IO;
                 while(!isValidInput);
             }
             public void User() // Условие победы
-        {
-            makeField();
-
-            while (attempt < 6)
-            {  
-                validity();
+            {
+                do
+                {
+                    System.Console.Write("Введите ник - ");
+                    nikname = Console.ReadLine();
+                } 
+                while (string.IsNullOrEmpty(nikname));
 
                 Console.Clear();
-
-                CheckBox();
-            
-                win = 0;
-                for(int i = 0; i < field.GetLength(0); i++)
-                {   
-                    if(exampleWord[i] == userWordChar[i])
-                    win++;
-                }
-                if(win >= 5) // победа
-                {
-                    Console.Clear();
-                    CheckBox();
-                    score++;
-                    System.Console.WriteLine("Ты победил!");
-                    break;
-                }
-                if(attempt == 5) // проигрыш
-                {
-                    Console.Clear();
-                    CheckBox();
-                    nikname = null;
-                    System.Console.WriteLine("Ты проиграл!");
-                }
+                System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");
                 
-                attempt++;
+                makeField();
+
+                while (attempt < 6)
+                {  
+                    validity();
+
+                    Console.Clear();
+
+                    CheckBox();
+                
+                    win = 0;
+                    for(int i = 0; i < field.GetLength(0); i++)
+                    {   
+                        if(exampleWord[i] == userWordChar[i])
+                        win++;
+                    }
+                    if(win >= 5) // победа
+                    {
+                        Console.Clear();
+                        CheckBox();
+                        score++;
+                        System.Console.WriteLine("Ты победил!");
+                        break;
+                    }
+                    if(attempt == 5) // проигрыш
+                    {
+                        Console.Clear();
+                        CheckBox();
+                        nikname = null;
+                        System.Console.WriteLine("Ты проиграл!");
+                    }
+                    
+                    attempt++;
+                } 
+                attempt = 0;
             } 
-        } 
             public string GetNickname()
             {
                 return nikname;

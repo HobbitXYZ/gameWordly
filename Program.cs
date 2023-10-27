@@ -14,9 +14,7 @@ namespace Users
             Biz biz = new Biz();
             GameState gm = new GameState();
             int action = 0;
-            
-            
-            
+
             while (action != 3)
             {
                 System.Console.Write("Выберите действие: \n" +
@@ -62,9 +60,7 @@ namespace Users
                         break;
                     }
                 }
-              
-            }
-              
+            }    
         } 
     }
 }
