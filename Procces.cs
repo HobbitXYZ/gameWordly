@@ -10,6 +10,7 @@ namespace Buissnes
         class Biz
         {
             static string nikname;
+            static bool save = false;
             static int score = 0;
             static char[] exampleWord = {' ', ' ', ' ', ' ', ' '}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
             static char[,] field = new char[5, 6]; // Поле
@@ -78,12 +79,10 @@ namespace Buissnes
             {
                 bool isValidInput = false;
                 string userWord; 
-                bool save = false;            
+                            
                 do
                 {
-                    
                     isValidInput = true; // Чтобы зайти в цикл
-                    save = true;
                     System.Console.Write("Введите слово: ");
 
                     ConsoleKeyInfo[] word = new ConsoleKeyInfo[5];
@@ -133,7 +132,7 @@ namespace Buissnes
                         isValidInput = false;
                     }
                 }
-                while(!isValidInput || !save);
+                while(!isValidInput);
             }
             public void User() // Условие победы
             {
