@@ -3,6 +3,7 @@ using System.Linq;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Buissnes
     {
@@ -76,31 +77,37 @@ namespace Buissnes
             static void validity() // Проверка на ввод
             {
                 bool isValidInput = false;
-                string userWord;             
+                string userWord; 
+                bool save = false;            
                 do
                 {
+                    
                     isValidInput = true; // Чтобы зайти в цикл
+                    save = true;
                     System.Console.Write("Введите слово: ");
 
                     ConsoleKeyInfo[] word = new ConsoleKeyInfo[5];
-                    for (int i = 0; i < 5; i++){
+                    for (int i = 0; i < 5; i++)
+                    {
                         word[i] = Console.ReadKey();
                         if (word[i].Key == ConsoleKey.Backspace)
                         {
                             i -= 2;
                             continue;
                         }
-                        if (i > 0 && word[i].Modifiers == ConsoleModifiers.Control && word[i].Key == ConsoleKey.S) return;
-
+                        if (i > 0 && word[i].Modifiers == ConsoleModifiers.Control && word[i].Key == ConsoleKey.S)
+                        {
+                            save = true;
+                            break;
+                        }   
                     }
                     StringBuilder wordBuilder = new(5);
                     foreach(var key in word)
                     {
                         wordBuilder.Append(key.KeyChar);
                     }
-                    userWord = wordBuilder.ToString();
+                    userWord = wordBuilder.ToString().ToUpper();
 
-                    userWord = userWord.ToUpper();
                     userWordChar = userWord.ToCharArray();
                     
                     if (userWord.Length == 5)
@@ -126,7 +133,7 @@ namespace Buissnes
                         isValidInput = false;
                     }
                 }
-                while(!isValidInput);
+                while(!isValidInput || !save);
             }
             public void User() // Условие победы
             {
