@@ -2,8 +2,9 @@ using System;
 using System.Linq;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 
-    namespace Buissnes
+namespace Buissnes
     {
         class Biz
         {
@@ -80,7 +81,25 @@ using System.IO;
                 {
                     isValidInput = true; // Чтобы зайти в цикл
                     System.Console.Write("Введите слово: ");
-                    userWord = Console.ReadLine();
+
+                    ConsoleKeyInfo[] word = new ConsoleKeyInfo[5];
+                    for (int i = 0; i < 5; i++){
+                        word[i] = Console.ReadKey();
+                        if (word[i].Key == ConsoleKey.Backspace)
+                        {
+                            i -= 2;
+                            continue;
+                        }
+                        if (i > 0 && word[i].Modifiers == ConsoleModifiers.Control && word[i].Key == ConsoleKey.S) return;
+
+                    }
+                    StringBuilder wordBuilder = new(5);
+                    foreach(var key in word)
+                    {
+                        wordBuilder.Append(key.KeyChar);
+                    }
+                    userWord = wordBuilder.ToString();
+
                     userWord = userWord.ToUpper();
                     userWordChar = userWord.ToCharArray();
                     
@@ -160,6 +179,10 @@ using System.IO;
             public string GetNickname()
             {
                 return nikname;
+            }
+            public char[,] GetField()
+            {
+                return field;
             }
         }  
     }

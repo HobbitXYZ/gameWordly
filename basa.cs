@@ -7,6 +7,8 @@ namespace data
 {
     public class GameState
     {
+        static Biz biz = new Biz();
+        string nikname = biz.GetNickname();
         public void ScoreTable()
         {
             Biz biz = new Biz();
@@ -42,8 +44,23 @@ namespace data
             foreach (var entry in sortedStringCounts) // Перебираем все элменеты
             {
                 Console.WriteLine($"Никнейм: '{entry.Key}', Колиsчество угаданных слов: {entry.Value}");
-            }
+            }  
+        }
+        public void SaveGame()
+        {
             
+            char[,] field = biz.GetField();
+
+            using (StreamWriter writer = new StreamWriter(@".\Save.txt"))
+            {
+                for(int i = 0; i < field.GetLength(1); i++)
+                {
+                    for(int j = 0; j < field.GetLength(0); j++)
+                    {
+                        writer.Write($"{field[j,i]}");
+                    }
+                }
+            }
         }
     }
 }
