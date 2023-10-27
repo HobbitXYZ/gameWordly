@@ -14,6 +14,7 @@ namespace data
 
             using (StreamWriter writer = new StreamWriter(@".\ScoreTable.txt", true))
             {
+                if(nikname != null)
                 writer.Write($",{nikname}");
                 writer.Close();
             }

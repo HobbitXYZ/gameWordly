@@ -150,6 +150,7 @@ using System.IO;
                 {
                     Console.Clear();
                     CheckBox();
+                    nikname = null;
                     System.Console.WriteLine("Ты проиграл!");
                 }
                 
