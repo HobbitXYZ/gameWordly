@@ -45,7 +45,7 @@ namespace Buissnes
                 guessWordStr = words[randomIndex];
                 exampleWord = guessWordStr.ToCharArray();  
             }
-            static void CheckBox() // Присвоение буквы и Проверка буквы
+            static void CheckBox(int attempt, char[,] field) // Присвоение буквы и Проверка буквы
             {
                 for (int i = 0; i < field.GetLength(1); i++ )
                 {
@@ -160,7 +160,7 @@ namespace Buissnes
 
                         Console.Clear();
 
-                        CheckBox();
+                        CheckBox(attempt, field);
                     
                         win = 0;
                         for(int i = 0; i < field.GetLength(0); i++)
@@ -171,7 +171,7 @@ namespace Buissnes
                         if(win >= 5) // победа
                         {
                             Console.Clear();
-                            CheckBox();
+                            CheckBox(attempt, field);
                             score++;
                             System.Console.WriteLine("Ты победил!");
                             break;
@@ -179,7 +179,7 @@ namespace Buissnes
                         if(attempt == 5) // проигрыш
                         {
                             Console.Clear();
-                            CheckBox();
+                            CheckBox(attempt, field);
                             nikname = null;
                             System.Console.WriteLine("Ты проиграл!");
                         }
@@ -199,12 +199,15 @@ namespace Buissnes
                 int attempt;
                 string exampleWord;
                 char[,] field;
+                string nikname;
 
                 GameState instance = new GameState();
-                instance.LoadGame(out attempt, out exampleWord, out field);
+                instance.LoadGame(out attempt, out exampleWord, out field, out nikname);
 
                 System.Console.WriteLine(attempt);
                 System.Console.WriteLine(exampleWord);
+
+                System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");
 
                 for(int i = 0; i < field.GetLength(1); i++)
                 {
@@ -214,6 +217,40 @@ namespace Buissnes
                     }
                 System.Console.WriteLine();
                 }
+
+                while (attempt < 6)
+                {  
+                    validity();
+
+                    Console.Clear();
+
+                    CheckBox(attempt, field);
+                
+                    win = 0;
+                    for(int i = 0; i < field.GetLength(0); i++)
+                    {   
+                        if(exampleWord[i] == userWordChar[i])
+                        win++;
+                    }
+                    if(win >= 5) // победа
+                    {
+                        Console.Clear();
+                        CheckBox(attempt, field);
+                        score++;
+                        System.Console.WriteLine("Ты победил!");
+                        break;
+                    }
+                    if(attempt == 5) // проигрыш
+                    {
+                        Console.Clear();
+                        CheckBox(attempt, field);
+                        nikname = null;
+                        System.Console.WriteLine("Ты проиграл!");
+                    }
+                    
+                    attempt++;
+                } 
+                attempt = 0;
 
             }
             public string GetNickname()
