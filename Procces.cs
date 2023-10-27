@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using data;
 
 namespace Buissnes
 
@@ -195,6 +196,12 @@ namespace Buissnes
                 
                 }
             } 
+            public void GameLoad()
+            {
+                GameState gm = new GameState();
+
+                
+            }
             public string GetNickname()
             {
                 return nikname;
