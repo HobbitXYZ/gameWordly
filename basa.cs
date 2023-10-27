@@ -48,7 +48,7 @@ namespace data
         }
         public void SaveGame()
         {
-            
+
             char[,] field = biz.GetField();
 
             using (StreamWriter writer = new StreamWriter(@".\Save.txt"))

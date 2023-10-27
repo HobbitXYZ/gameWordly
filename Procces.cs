@@ -6,7 +6,9 @@ using System.Text;
 using System.Xml.Linq;
 
 namespace Buissnes
+
     {
+        public class KeyboardInterrupt : System.Exception { } 
         class Biz
         {
             static string nikname;
@@ -84,6 +86,7 @@ namespace Buissnes
                 {
                     isValidInput = true; // Чтобы зайти в цикл
                     System.Console.Write("Введите слово: ");
+                    System.Console.WriteLine();
 
                     ConsoleKeyInfo[] word = new ConsoleKeyInfo[5];
                     for (int i = 0; i < 5; i++)
@@ -96,8 +99,7 @@ namespace Buissnes
                         }
                         if (i > 0 && word[i].Modifiers == ConsoleModifiers.Control && word[i].Key == ConsoleKey.S)
                         {
-                            save = true;
-                            break;
+                            throw new KeyboardInterrupt();
                         }   
                     }
                     StringBuilder wordBuilder = new(5);
@@ -136,51 +138,61 @@ namespace Buissnes
             }
             public void User() // Условие победы
             {
-                do
+                try
                 {
-                    System.Console.Write("Введите ник - ");
-                    nikname = Console.ReadLine();
-                } 
-                while (string.IsNullOrEmpty(nikname));
-
-                Console.Clear();
-                System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");
-                
-                makeField();
-
-                while (attempt < 6)
-                {  
-                    validity();
+                    do
+                    {
+                        System.Console.Write("Введите ник - ");
+                        nikname = Console.ReadLine();
+                    } 
+                    while (string.IsNullOrEmpty(nikname));
 
                     Console.Clear();
-
-                    CheckBox();
-                
-                    win = 0;
-                    for(int i = 0; i < field.GetLength(0); i++)
-                    {   
-                        if(exampleWord[i] == userWordChar[i])
-                        win++;
-                    }
-                    if(win >= 5) // победа
-                    {
-                        Console.Clear();
-                        CheckBox();
-                        score++;
-                        System.Console.WriteLine("Ты победил!");
-                        break;
-                    }
-                    if(attempt == 5) // проигрыш
-                    {
-                        Console.Clear();
-                        CheckBox();
-                        nikname = null;
-                        System.Console.WriteLine("Ты проиграл!");
-                    }
+                    System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");
                     
-                    attempt++;
-                } 
-                attempt = 0;
+                    makeField();
+
+                    while (attempt < 6)
+                    {  
+                        validity();
+
+                        Console.Clear();
+
+                        CheckBox();
+                    
+                        win = 0;
+                        for(int i = 0; i < field.GetLength(0); i++)
+                        {   
+                            if(exampleWord[i] == userWordChar[i])
+                            win++;
+                        }
+                        if(win >= 5) // победа
+                        {
+                            Console.Clear();
+                            CheckBox();
+                            score++;
+                            System.Console.WriteLine("Ты победил!");
+                            break;
+                        }
+                        if(attempt == 5) // проигрыш
+                        {
+                            Console.Clear();
+                            CheckBox();
+                            nikname = null;
+                            System.Console.WriteLine("Ты проиграл!");
+                        }
+                        
+                        attempt++;
+                    } 
+                    attempt = 0;
+                }
+                catch(KeyboardInterrupt) // Прерывание Сохранение работы программы
+                {
+                Console.Clear();
+                System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
+                
+                
+                }
             } 
             public string GetNickname()
             {
