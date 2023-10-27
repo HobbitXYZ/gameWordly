@@ -30,12 +30,16 @@ namespace Users
                 {
                     case 0:
                     gm.CountSqure();
+                    System.Console.Write("Нажмите Enter чтобы выйти ");
+                    Console.ReadLine();
                     break;
 
                     case 1:
                     biz.guessWord();
                     biz.User();
                     gm.ScoreTable();
+                    System.Console.Write("Нажмите Enter чтобы выйти ");
+                    Console.ReadLine();
                     break;
 
                     case 3:

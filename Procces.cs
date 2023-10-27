@@ -14,7 +14,7 @@ using System.IO;
             static char[] userWordChar = {' ', ' ', ' ', ' ', ' '}; // Записанное слово пользователя по буквам
             static int attempt = 0; // попытка
             static int win = 0; //Проверка на победу
-            
+
             static void makeField() // Печать пустого поля
             {
                 do
@@ -122,15 +122,12 @@ using System.IO;
 
             while (attempt < 6)
             {  
-                
                 validity();
-                
+
                 Console.Clear();
 
-                
                 CheckBox();
             
-
                 win = 0;
                 for(int i = 0; i < field.GetLength(0); i++)
                 {   
@@ -143,16 +140,13 @@ using System.IO;
                     CheckBox();
                     score++;
                     System.Console.WriteLine("Ты победил!");
-                    Console.ReadLine();
                     break;
-
                 }
                 if(attempt == 5) // проигрыш
                 {
                     Console.Clear();
                     CheckBox();
                     System.Console.WriteLine("Ты проиграл!");
-                    Console.ReadLine();
                 }
                 
                 attempt++;
