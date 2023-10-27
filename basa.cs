@@ -19,7 +19,7 @@ namespace data
                 writer.Close();
             }
         }
-        public void CountSqure() // Подчитываем таблицу с результатами. Одно имя и есть один балл!
+        public void CountSqure() // Подсчитываем таблицу с результатами. Одно имя и есть один балл!
         {
             string fileContent = File.ReadAllText(@".\ScoreTable.txt"); // Откуда 
             string[] niknames = fileContent.Split(','); 
@@ -36,8 +36,10 @@ namespace data
                     stringCounts[nikname] = 1; // Если нет то добавляем
                 }
             }
+            // Производим сортировку по убыванию угаданных слов
+            var sortedStringCounts = stringCounts.OrderByDescending(str => str.Value).ToDictionary(str => str.Key, str => str.Value);
 
-            foreach (var entry in stringCounts) // Перебираем все элменеты
+            foreach (var entry in sortedStringCounts) // Перебираем все элменеты
             {
                 Console.WriteLine($"Никнейм: '{entry.Key}', Колиsчество угаданных слов: {entry.Value}");
             }
