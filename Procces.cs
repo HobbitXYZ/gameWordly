@@ -106,11 +106,15 @@ using System.IO;
                                 break; // а нам одного достаточно АХАХХАХАХАХХА D;
                             }
                         }
+                        Console.BackgroundColor = ConsoleColor.Red;
                         System.Console.WriteLine("Введено некорректное слово. Пожалуйста, введите слово из 5 букв.");
+                        Console.BackgroundColor = ConsoleColor.Black;
                     }
                     else
                     {
+                        Console.BackgroundColor = ConsoleColor.Red;
                         System.Console.WriteLine("Введено некорректное слово. Пожалуйста, введите слово из 5 букв.");
+                        Console.BackgroundColor = ConsoleColor.Black;
                         isValidInput = false;
                     }
                 }
@@ -156,10 +160,5 @@ using System.IO;
             {
                 return nikname;
             }
-            public int GetScore()
-            {
-                return score;
-            }
-
         }  
     }
