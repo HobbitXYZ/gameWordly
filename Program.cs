@@ -23,6 +23,7 @@ namespace Users
                 "(0) Посмотреть таблицу результатов. \n" +
                 "(1) Новая игра. \n" +
                 "(2) Продолжить игру. \n" +
+                "(3) Выйти. \n" +
                 "Выш выбор - ");
 
                 if(int.TryParse(Console.ReadLine(), out action))
@@ -45,6 +46,9 @@ namespace Users
                         System.Console.Write("Нажмите Enter чтобы выйти ");
                         Console.ReadLine();
                         Console.Clear();
+                        break;
+
+                        case 2:
                         break;
 
                         case 3:
