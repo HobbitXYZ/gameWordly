@@ -63,10 +63,10 @@ namespace data
                 }
             }
         }
-        public void LoadGame(out int attempt, out string exampleWord)
+        public void LoadGame(out int attempt, out string exampleWord, out char[,] field)
         {
             string nikname = biz.GetNickname();
-            int n = 0;
+            int n = 5;
             
             
             string fileContent = File.ReadAllText(@".\Save.txt"); // сохранение
@@ -74,9 +74,9 @@ namespace data
 
             attempt = 1 + (allInfo.Count(c => c != '*') - 5) / 5;
             exampleWord = allInfo.Substring(0, 5);
-            char[] fieldChar = allInfo.Substring(0, 35).ToCharArray();
-            char[,] field = new char[5, 6];
-                for(int i = 0; i < 4; i++)
+            char[] fieldChar = allInfo.ToCharArray();
+            field = new char[5, 6];
+                for(int i = 0; i < 6; i++)
                 {
                     for(int j = 0; j < 5; j++)
                     {

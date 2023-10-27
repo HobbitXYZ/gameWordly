@@ -48,8 +48,7 @@ namespace Users
                         break;
 
                         case 2:
-                        biz.GameLoad();
-
+                        biz.GL();
                         break;
 
                         case 3:

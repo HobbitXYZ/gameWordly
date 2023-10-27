@@ -192,15 +192,29 @@ namespace Buissnes
                 {
                 Console.Clear();
                 System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
-                
-                
                 }
-            } 
-            public void GameLoad()
+            }
+            public void GL()
             {
-                GameState gm = new GameState();
+                int attempt;
+                string exampleWord;
+                char[,] field;
 
-                
+                GameState instance = new GameState();
+                instance.LoadGame(out attempt, out exampleWord, out field);
+
+                System.Console.WriteLine(attempt);
+                System.Console.WriteLine(exampleWord);
+
+                for(int i = 0; i < field.GetLength(1); i++)
+                {
+                    for(int j = 0; j < field.GetLength(0); j++)
+                    {
+                        System.Console.Write(" " + field[j,i] + " "); // Инвертирование индексов для правильной работы с массивом
+                    }
+                System.Console.WriteLine();
+                }
+
             }
             public string GetNickname()
             {
