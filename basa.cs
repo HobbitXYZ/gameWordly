@@ -23,19 +23,24 @@ namespace data
         public void CountSqure() // Подчитываем таблицу с результатами. Одно имя и есть один балл!
         {
             string fileContent = File.ReadAllText(@".\ScoreTable.txt"); // Откуда 
-            string[] niknames = fileContent.Split(',');
-            Dictionary<string, int> stringCounts = new Dictionary<string, int>();
+            string[] niknames = fileContent.Split(','); 
+            Dictionary<string, int> stringCounts = new Dictionary<string, int>(); // Создаем словарь
 
-            foreach(string nik in niknames)
+            foreach (string nikname in niknames) 
             {
-                stringCounts[nik] = 1;
+                if (stringCounts.ContainsKey(nikname)) // Проверяем, существует ли ник в словаре
+                {
+                    stringCounts[nikname]++; // Если да то ++ счетчик
+                }
+                else
+                {
+                    stringCounts[nikname] = 1; // Если нет то добавляем
+                }
             }
 
-            int uniqueNicknames = stringCounts.Keys.Count;
-
-            foreach (var entry in stringCounts)
+            foreach (var entry in stringCounts) // Перебираем все элменеты
             {
-                Console.WriteLine($"Никнейм: '{entry.Key}', Количество угаданных слов: {entry.Value}");
+                Console.WriteLine($"Никнейм: '{entry.Key}', Колиsчество угаданных слов: {entry.Value}");
             }
             
         }
