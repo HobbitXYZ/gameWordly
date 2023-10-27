@@ -14,7 +14,9 @@ namespace Users
             Biz biz = new Biz();
             GameState gm = new GameState();
             int action = 0;
-
+            
+            
+            
             while (action != 3)
             {
                 System.Console.Write("Выберите действие: \n" +
@@ -22,27 +24,41 @@ namespace Users
                 "(1) Новая игра. \n" +
                 "(2) Продолжить игру. \n" +
                 "Выш выбор - ");
-                action = int.Parse(Console.ReadLine());
 
-                switch(action)
+                if(int.TryParse(Console.ReadLine(), out action))
                 {
-                    case 0:
-                    gm.CountSqure();
-                    System.Console.Write("Нажмите Enter чтобы выйти ");
-                    Console.ReadLine();
-                    break;
+                    switch(action)
+                    {
+                        case 0:
+                        Console.Clear();
+                        gm.CountSqure();
+                        System.Console.Write("Нажмите Enter чтобы выйти ");
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
 
-                    case 1:
-                    biz.guessWord();
-                    biz.User();
-                    gm.ScoreTable();
-                    System.Console.Write("Нажмите Enter чтобы выйти ");
-                    Console.ReadLine();
-                    break;
+                        case 1:
+                        Console.Clear();
+                        biz.guessWord();
+                        biz.User();
+                        gm.ScoreTable();
+                        System.Console.Write("Нажмите Enter чтобы выйти ");
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
 
-                    case 3:
-                    break;
-                }   
+                        case 3:
+                        break;
+
+                        default:
+                        Console.Clear();
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Некорректный ввод, попробуйте снова.");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        break;
+                    }
+                }
+              
             }
               
         } 
