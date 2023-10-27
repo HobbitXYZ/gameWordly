@@ -15,9 +15,7 @@ namespace Users
             GameState gm = new GameState();
             int action = 0;
 
-           
-
-            do
+            while (action != 3)
             {
                 System.Console.Write("Выберите действие: \n" +
                 "(0) Посмотреть таблицу результатов. \n" +
@@ -46,7 +44,7 @@ namespace Users
                     break;
                 }   
             }
-            while (action > 3);   
+              
         } 
     }
 }
