@@ -48,11 +48,12 @@ namespace data
         }
         public void SaveGame()
         {
-
             char[,] field = biz.GetField();
+            string guessWordStr = biz.GetGuessWordStr();
 
             using (StreamWriter writer = new StreamWriter(@".\Save.txt"))
             {
+                writer.Write($"{guessWordStr}");
                 for(int i = 0; i < field.GetLength(1); i++)
                 {
                     for(int j = 0; j < field.GetLength(0); j++)
@@ -61,6 +62,14 @@ namespace data
                     }
                 }
             }
+        }
+        public void LoadGame()
+        {
+            string fileContent = File.ReadAllText(@".\SaveGame.txt"); // сохранение
+            string allInfo = fileContent;
+
+            int attempt = (allInfo.Count(c => c != '*') - 5) % 5;
+            string exampleWord = 
         }
     }
 }

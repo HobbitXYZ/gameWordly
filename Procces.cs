@@ -11,6 +11,7 @@ namespace Buissnes
         public class KeyboardInterrupt : System.Exception { } 
         class Biz
         {
+            static string guessWordStr;
             static string nikname;
             static bool save = false;
             static int score = 0;
@@ -40,7 +41,7 @@ namespace Buissnes
                 Random random = new Random();
                 int randomIndex = random.Next(0, words.Length);
 
-                string guessWordStr = words[randomIndex];
+                guessWordStr = words[randomIndex];
                 exampleWord = guessWordStr.ToCharArray();  
             }
             static void CheckBox() // Присвоение буквы и Проверка буквы
@@ -201,6 +202,10 @@ namespace Buissnes
             public char[,] GetField()
             {
                 return field;
+            }
+            public string GetGuessWordStr()
+            {
+                return guessWordStr;
             }
         }  
     }
