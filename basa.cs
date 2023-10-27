@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using Buissnes;
 
 namespace data
@@ -24,6 +25,18 @@ namespace data
             string fileContent = File.ReadAllText(@".\ScoreTable.txt"); // Откуда 
             string[] niknames = fileContent.Split(',');
             Dictionary<string, int> stringCounts = new Dictionary<string, int>();
+
+            foreach(string nik in niknames)
+            {
+                stringCounts[nik] = 1;
+            }
+
+            int uniqueNicknames = stringCounts.Keys.Count;
+
+            foreach (var entry in stringCounts)
+            {
+                Console.WriteLine($"Никнейм: '{entry.Key}', Количество угаданных слов: {entry.Value}");
+            }
             
         }
     }
