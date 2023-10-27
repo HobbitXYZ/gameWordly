@@ -29,6 +29,7 @@ namespace Users
                 switch(action)
                 {
                     case 0:
+                    gm.CountSqure();
                     break;
 
                     case 1:

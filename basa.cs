@@ -15,12 +15,15 @@ namespace data
 
             using (StreamWriter writer = new StreamWriter(@".\ScoreTable.txt", true))
             {
-                writer.WriteLine($"{nikname},{score}");
+                writer.Write($",{nikname}");
                 writer.Close();
             }
         }
-        public void SqureAmmount()
+        public void CountSqure() // Подчитываем таблицу с результатами. Одно имя и есть один балл!
         {
+            string fileContent = File.ReadAllText(@".\ScoreTable.txt"); // Откуда 
+            string[] niknames = fileContent.Split(',');
+            Dictionary<string, int> stringCounts = new Dictionary<string, int>();
             
         }
     }
