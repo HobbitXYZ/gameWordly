@@ -55,7 +55,7 @@ namespace Buissnes
                     {
                         field[j,attempt] = userWordChar[j]; // Вытащил из рудимента старого checkBox() присвоение элемента
 
-                        if(field[j,i] == between[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
+                        if(field[j,i] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                         {
                             Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
                             Console.ForegroundColor = ConsoleColor.Black;
