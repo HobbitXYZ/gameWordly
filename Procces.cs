@@ -12,7 +12,7 @@ namespace Buissnes
         public class KeyboardInterrupt : System.Exception { } 
         class Biz
         {
-            private static string guessWordStr;
+            public static string guessWordStr;
             static string nikname;
             static bool save = false;
             static int score = 0;
@@ -206,16 +206,14 @@ namespace Buissnes
                 GameState instance = new GameState();
                 try
                 {
-                    int attempt;
-                    char[] exampleWord;
                     char[,] localField;
                     string nikname = "";
                     char[] userWordChar = {'*', '*', '*', '*', '*'};
-                    //string currentGuessWordStr = guessWordStr;
+                    
 
                     instance.LoadGame(out attempt, out exampleWord, out localField, out nikname);
                     field = localField;
-                    //guessWordStr = exampleWord.ToString();
+                    guessWordStr = new string(exampleWord);
 
                     System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");                 
 
@@ -270,7 +268,6 @@ namespace Buissnes
             }
             public char[,] GetField()
             {
-                
                 return field;
             }
             public string GetGuessWordStr()

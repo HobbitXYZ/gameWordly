@@ -49,7 +49,6 @@ namespace Users
                         case 2:
                         biz.GL();
                         
-                        gm.ScoreTable();
                         System.Console.Write("Нажмите Enter чтобы выйти ");
                         Console.ReadLine();
                         Console.Clear();
