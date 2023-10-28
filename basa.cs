@@ -9,10 +9,10 @@ namespace data
     {
         static Biz biz = new Biz();
         string nikname = biz.GetNickname();
-        public void ScoreTable()
+        public void ScoreTable(string nikname)
         {
             Biz biz = new Biz();
-            string nikname = biz.GetNickname();
+            nikname = biz.GetNickname();
 
             using (StreamWriter writer = new StreamWriter(@".\ScoreTable.txt", true))
             {

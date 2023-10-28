@@ -178,7 +178,7 @@ namespace Buissnes
                             CheckBox(attempt, field, exampleWord, userWordChar);
                             score++;
                             System.Console.WriteLine("Ты победил!");
-                            gm.ScoreTable();
+                            gm.ScoreTable(nikname);
                             break;
                         }
                         if(attempt == 5) // проигрыш
@@ -239,7 +239,7 @@ namespace Buissnes
                             CheckBox(attempt, field, exampleWord, userWordChar);
                             score++;
                             System.Console.WriteLine("Ты победил!");
-                            instance.ScoreTable();
+                            instance.ScoreTable(nikname);
                             break;
                         }
                         if(attempt == 5) // проигрыш
@@ -256,9 +256,10 @@ namespace Buissnes
                 }
                 catch(KeyboardInterrupt) // Прерывание Сохранение работы программы
                 {
-                instance.SaveGame();
-                Console.Clear();
-                System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
+                    instance.ScoreTable(nikname);
+                    instance.SaveGame();
+                    Console.Clear();
+                    System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
                 }
 
             }
