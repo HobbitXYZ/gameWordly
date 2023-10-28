@@ -12,7 +12,7 @@ namespace Buissnes
         public class KeyboardInterrupt : System.Exception { } 
         class Biz
         {
-            static string guessWordStr;
+            private static string guessWordStr;
             static string nikname;
             static bool save = false;
             static int score = 0;
@@ -45,7 +45,7 @@ namespace Buissnes
                 guessWordStr = words[randomIndex];
                 exampleWord = guessWordStr.ToCharArray();  
             }
-            static void CheckBox(int attempt, char[,] field, char[] exampleWord) // Присвоение буквы и Проверка буквы
+            static void CheckBox(int attempt, char[,] field, char[] exampleWord, char[] userWordChar) // Присвоение буквы и Проверка буквы
             {
                 for (int i = 0; i < field.GetLength(1); i++ )
                 {
@@ -62,7 +62,7 @@ namespace Buissnes
                             Console.ForegroundColor = ConsoleColor.White;
                             continue;
                         }
-                        if (exampleWord.Contains(field[j,i])) //Буква в веденом слове буква есть в загаданном 
+                        else if (exampleWord.Contains(field[j,i])) //Буква в веденом слове буква есть в загаданном 
                         {
                             Console.ForegroundColor = ConsoleColor.Black;
                             Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
@@ -73,13 +73,15 @@ namespace Buissnes
                         else // Буквы нет
                         {
                             Console.BackgroundColor = ConsoleColor.Black;
-                            System.Console.Write(" " + field[j,i] + " ");                       
+                            System.Console.Write(" " + field[j,i] + " ");
+                            Console.ForegroundColor = ConsoleColor.White;                       
                         }
                     }
                     System.Console.WriteLine();
+                    Console.BackgroundColor = ConsoleColor.Black;
                 }
             }  
-            static void validity() // Проверка на ввод
+            static void validity(out char[] userWordChar) // Проверка на ввод
             {
                 bool isValidInput = false;
                 string userWord; 
@@ -140,6 +142,7 @@ namespace Buissnes
             }
             public void User() // Условие победы
             {
+                attempt = 0;
                 GameState gm = new GameState();
                 try
                 {
@@ -157,11 +160,11 @@ namespace Buissnes
 
                     while (attempt < 6)
                     {  
-                        validity();
+                        validity(out userWordChar);
 
                         Console.Clear();
 
-                        CheckBox(attempt, field, exampleWord);
+                        CheckBox(attempt, field, exampleWord, userWordChar);
                     
                         win = 0;
                         for(int i = 0; i < field.GetLength(0); i++)
@@ -172,15 +175,16 @@ namespace Buissnes
                         if(win >= 5) // победа
                         {
                             Console.Clear();
-                            CheckBox(attempt, field, exampleWord);
+                            CheckBox(attempt, field, exampleWord, userWordChar);
                             score++;
                             System.Console.WriteLine("Ты победил!");
+                            gm.ScoreTable();
                             break;
                         }
                         if(attempt == 5) // проигрыш
                         {
                             Console.Clear();
-                            CheckBox(attempt, field, exampleWord);
+                            CheckBox(attempt, field, exampleWord, userWordChar);
                             nikname = null;
                             System.Console.WriteLine("Ты проиграл!");
                         }
@@ -206,21 +210,24 @@ namespace Buissnes
                     char[] exampleWord;
                     char[,] localField;
                     string nikname = "";
+                    char[] userWordChar = {'*', '*', '*', '*', '*'};
+                    //string currentGuessWordStr = guessWordStr;
 
                     instance.LoadGame(out attempt, out exampleWord, out localField, out nikname);
                     field = localField;
+                    //guessWordStr = exampleWord.ToString();
 
                     System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");                 
 
-                    CheckBox(attempt, field, exampleWord);
+                    CheckBox(attempt, field, exampleWord, userWordChar);
                     while (attempt < 6)
                     {  
 
-                        validity();
+                        validity(out userWordChar);
 
                         Console.Clear();
 
-                        CheckBox(attempt, field, exampleWord);
+                        CheckBox(attempt, field, exampleWord, userWordChar);
                     
                         win = 0;
                         for(int i = 0; i < field.GetLength(0); i++)
@@ -231,15 +238,16 @@ namespace Buissnes
                         if(win >= 5) // победа
                         {
                             Console.Clear();
-                            CheckBox(attempt, field, exampleWord);
+                            CheckBox(attempt, field, exampleWord, userWordChar);
                             score++;
                             System.Console.WriteLine("Ты победил!");
+                            instance.ScoreTable();
                             break;
                         }
                         if(attempt == 5) // проигрыш
                         {
                             Console.Clear();
-                            CheckBox(attempt, field, exampleWord);
+                            CheckBox(attempt, field, exampleWord, userWordChar);
                             nikname = null;
                             System.Console.WriteLine("Ты проиграл!");
                         }

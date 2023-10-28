@@ -74,15 +74,15 @@ namespace data
             allInfo = fileContent;
 
             attempt = (allInfo.Count(c => c != '*') - 5) / 5;
-            string exampleWordStr = allInfo.Substring(0, 5);
-            exampleWord = exampleWordStr.ToCharArray();
+            string guessWordStr = allInfo.Substring(0, 5);
+            exampleWord = guessWordStr.ToCharArray();
             char[] fieldChar = allInfo.ToCharArray();
             field = new char[5, 6];
 
             int n = 5;
-            for(int i = 0; i < 6; i++)
+            for(int i = 0; i < field.GetLength(1); i++)
             {
-                for(int j = 0; j < 5; j++)
+                for(int j = 0; j < field.GetLength(0); j++)
                 {
                     field[j,i] = fieldChar[n];
                     n++;
