@@ -45,7 +45,7 @@ namespace Buissnes
                 guessWordStr = words[randomIndex];
                 exampleWord = guessWordStr.ToCharArray();  
             }
-            static void CheckBox(int attempt, char[,] field) // Присвоение буквы и Проверка буквы
+            static void CheckBox(int attempt, char[,] field, char[] exampleWord) // Присвоение буквы и Проверка буквы
             {
                 for (int i = 0; i < field.GetLength(1); i++ )
                 {
@@ -140,6 +140,7 @@ namespace Buissnes
             }
             public void User() // Условие победы
             {
+                GameState gm = new GameState();
                 try
                 {
                     do
@@ -160,7 +161,7 @@ namespace Buissnes
 
                         Console.Clear();
 
-                        CheckBox(attempt, field);
+                        CheckBox(attempt, field, exampleWord);
                     
                         win = 0;
                         for(int i = 0; i < field.GetLength(0); i++)
@@ -171,7 +172,7 @@ namespace Buissnes
                         if(win >= 5) // победа
                         {
                             Console.Clear();
-                            CheckBox(attempt, field);
+                            CheckBox(attempt, field, exampleWord);
                             score++;
                             System.Console.WriteLine("Ты победил!");
                             break;
@@ -179,7 +180,7 @@ namespace Buissnes
                         if(attempt == 5) // проигрыш
                         {
                             Console.Clear();
-                            CheckBox(attempt, field);
+                            CheckBox(attempt, field, exampleWord);
                             nikname = null;
                             System.Console.WriteLine("Ты проиграл!");
                         }
@@ -190,67 +191,69 @@ namespace Buissnes
                 }
                 catch(KeyboardInterrupt) // Прерывание Сохранение работы программы
                 {
+                gm.SaveGame();
                 Console.Clear();
                 System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
                 }
             }
             public void GL()
             {
-                int attempt;
-                string exampleWord;
-                char[,] field;
-                string nikname;
-
+                Console.Clear();
                 GameState instance = new GameState();
-                instance.LoadGame(out attempt, out exampleWord, out field, out nikname);
-
-                System.Console.WriteLine(attempt);
-                System.Console.WriteLine(exampleWord);
-
-                System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");
-
-                for(int i = 0; i < field.GetLength(1); i++)
+                try
                 {
-                    for(int j = 0; j < field.GetLength(0); j++)
-                    {
-                        System.Console.Write(" " + field[j,i] + " "); // Инвертирование индексов для правильной работы с массивом
-                    }
-                System.Console.WriteLine();
-                }
+                    int attempt;
+                    char[] exampleWord;
+                    char[,] localField;
+                    string nikname = "";
 
-                while (attempt < 6)
-                {  
-                    validity();
+                    instance.LoadGame(out attempt, out exampleWord, out localField, out nikname);
+                    field = localField;
 
-                    Console.Clear();
+                    System.Console.Write($"Ваш никнейм - {nikname}\n Игра \"5 букв\" \n");                 
 
-                    CheckBox(attempt, field);
-                
-                    win = 0;
-                    for(int i = 0; i < field.GetLength(0); i++)
-                    {   
-                        if(exampleWord[i] == userWordChar[i])
-                        win++;
-                    }
-                    if(win >= 5) // победа
-                    {
+                    CheckBox(attempt, field, exampleWord);
+                    while (attempt < 6)
+                    {  
+
+                        validity();
+
                         Console.Clear();
-                        CheckBox(attempt, field);
-                        score++;
-                        System.Console.WriteLine("Ты победил!");
-                        break;
-                    }
-                    if(attempt == 5) // проигрыш
-                    {
-                        Console.Clear();
-                        CheckBox(attempt, field);
-                        nikname = null;
-                        System.Console.WriteLine("Ты проиграл!");
-                    }
+
+                        CheckBox(attempt, field, exampleWord);
                     
-                    attempt++;
-                } 
-                attempt = 0;
+                        win = 0;
+                        for(int i = 0; i < field.GetLength(0); i++)
+                        {   
+                            if(exampleWord[i] == userWordChar[i])
+                            win++;
+                        }
+                        if(win >= 5) // победа
+                        {
+                            Console.Clear();
+                            CheckBox(attempt, field, exampleWord);
+                            score++;
+                            System.Console.WriteLine("Ты победил!");
+                            break;
+                        }
+                        if(attempt == 5) // проигрыш
+                        {
+                            Console.Clear();
+                            CheckBox(attempt, field, exampleWord);
+                            nikname = null;
+                            System.Console.WriteLine("Ты проиграл!");
+                        }
+                        
+                        attempt++;
+                    } 
+                    attempt = 0;
+                }
+                catch(KeyboardInterrupt) // Прерывание Сохранение работы программы
+                {
+                instance.SaveGame();
+                Console.Clear();
+                System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
+                }
 
             }
             public string GetNickname()
@@ -259,6 +262,7 @@ namespace Buissnes
             }
             public char[,] GetField()
             {
+                
                 return field;
             }
             public string GetGuessWordStr()

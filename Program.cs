@@ -40,7 +40,6 @@ namespace Users
                         Console.Clear();
                         biz.guessWord();
                         biz.User();
-                        gm.SaveGame();
                         gm.ScoreTable();
                         System.Console.Write("Нажмите Enter чтобы выйти ");
                         Console.ReadLine();
@@ -49,6 +48,11 @@ namespace Users
 
                         case 2:
                         biz.GL();
+                        
+                        gm.ScoreTable();
+                        System.Console.Write("Нажмите Enter чтобы выйти ");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
                         case 3:

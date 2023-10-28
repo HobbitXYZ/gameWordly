@@ -63,18 +63,19 @@ namespace data
                 }
             }
         }
-        public void LoadGame(out int attempt, out string exampleWord, out char[,] field, out string nikname)
+        public void LoadGame(out int attempt, out char[] exampleWord, out char[,] field, out string nikname)
         {
             string fileContent = File.ReadAllText(@".\ScoreTable.txt");
             string allInfo = fileContent;
             string[] niknames = fileContent.Split(','); 
-            nikname = niknames[niknames.Length];
+            nikname = niknames[niknames.Length-1];
 
             fileContent = File.ReadAllText(@".\Save.txt"); // сохранение
             allInfo = fileContent;
 
             attempt = (allInfo.Count(c => c != '*') - 5) / 5;
-            exampleWord = allInfo.Substring(0, 5);
+            string exampleWordStr = allInfo.Substring(0, 5);
+            exampleWord = exampleWordStr.ToCharArray();
             char[] fieldChar = allInfo.ToCharArray();
             field = new char[5, 6];
 
