@@ -48,7 +48,6 @@ namespace Users
 
                         case 2:
                         biz.GL();
-                        
                         System.Console.Write("Нажмите Enter чтобы выйти ");
                         Console.ReadLine();
                         Console.Clear();
