@@ -47,26 +47,30 @@ namespace Buissnes
             }
             static void CheckBox(int attempt, char[,] field, char[] exampleWord, char[] userWordChar) // Присвоение буквы и Проверка буквы
             {
+                
                 for (int i = 0; i < field.GetLength(1); i++ )
                 {
-                    for(int j = 0; j < field.GetLength(0); j++ )
+                    char[] between = (char[])exampleWord.Clone(); // Клонируем exampleWord в between
+                    for (int j = 0; j < field.GetLength(0); j++ )
                     {
                         field[j,attempt] = userWordChar[j]; // Вытащил из рудимента старого checkBox() присвоение элемента
 
-                        if(field[j,i] == exampleWord[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
+                        if(field[j,i] == between[j]) //В веденом слове буква НА ТОМ ЖЕ МЕСТЕ что и в загаданном 
                         {
                             Console.BackgroundColor = ConsoleColor.Yellow; // Желтый - то же место
                             Console.ForegroundColor = ConsoleColor.Black;
                             System.Console.Write(" " + field[j,i] + " ");
+                            between[j] = ' ';
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.White;
-                            continue;
                         }
-                        else if (exampleWord.Contains(field[j,i])) //Буква в веденом слове буква есть в загаданном 
+                        else if (between.Contains(field[j,i])) //Буква в веденом слове буква есть в загаданном 
                         {
                             Console.ForegroundColor = ConsoleColor.Black;
                             Console.BackgroundColor = ConsoleColor.Gray; // Серый - у буквы другое место
                             System.Console.Write(" " + field[j,i] + " ");
+                            int index = Array.IndexOf(between, field[j,i]);
+                            between[index] = ' ';
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.White;
                         }
