@@ -12,9 +12,8 @@ namespace Buissnes
         public class KeyboardInterrupt : System.Exception { } 
         class Biz
         {
-            public static string guessWordStr;
-            static string nikname;
-            static bool save = false;
+            public static string guessWordStr = " ";
+            static string nikname = " ";
             static int score = 0;
             static char[] exampleWord = {' ', ' ', ' ', ' ', ' '}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
             static char[,] field = new char[5, 6]; // Поле
@@ -153,7 +152,7 @@ namespace Buissnes
                     do
                     {
                         System.Console.Write("Введите ник - ");
-                        nikname = Console.ReadLine();
+                        nikname = Console.ReadLine() ?? "";
                     } 
                     while (string.IsNullOrEmpty(nikname));
 
@@ -182,14 +181,14 @@ namespace Buissnes
                             CheckBox(attempt, field, exampleWord, userWordChar);
                             score++;
                             System.Console.WriteLine("Ты победил!");
-                            gm.ScoreTable(nikname);
+                            gm.ScoreTable(nikname);;
                             break;
                         }
                         if(attempt == 5) // проигрыш
                         {
                             Console.Clear();
                             CheckBox(attempt, field, exampleWord, userWordChar);
-                            nikname = null;
+                            nikname = null  ?? "";;
                             System.Console.WriteLine("Ты проиграл!");
                         }
                         
@@ -250,7 +249,7 @@ namespace Buissnes
                         {
                             Console.Clear();
                             CheckBox(attempt, field, exampleWord, userWordChar);
-                            nikname = null;
+                            nikname = null ?? "";
                             System.Console.WriteLine("Ты проиграл!");
                         }
                         

@@ -61,18 +61,18 @@ namespace data
                         writer.Write($"{field[j,i]}");
                     }
                 }
+                writer.Write(nikname);
             }
         }
         public void LoadGame(out int attempt, out char[] exampleWord, out char[,] field, out string nikname)
         {
             string fileContent = File.ReadAllText(@".\ScoreTable.txt");
             string allInfo = fileContent;
-            string[] niknames = fileContent.Split(','); 
-            nikname = niknames[niknames.Length-1];
 
             fileContent = File.ReadAllText(@".\Save.txt"); // сохранение
             allInfo = fileContent;
 
+            nikname = allInfo.Substring(35);
             attempt = (allInfo.Count(c => c != '*') - 5) / 5;
             string guessWordStr = allInfo.Substring(0, 5);
             exampleWord = guessWordStr.ToCharArray();
