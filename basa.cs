@@ -49,6 +49,7 @@ namespace data
         public void SaveGame()
         {
             char[,] field = biz.GetField();
+            nikname = biz.GetNickname();
             string guessWordStr = biz.GetGuessWordStr();
 
             using (StreamWriter writer = new StreamWriter(@".\Save.txt"))
@@ -66,14 +67,12 @@ namespace data
         }
         public void LoadGame(out int attempt, out char[] exampleWord, out char[,] field, out string nikname)
         {
-            string fileContent = File.ReadAllText(@".\ScoreTable.txt");
+            string fileContent = File.ReadAllText(@".\Save.txt"); // сохранение
             string allInfo = fileContent;
 
-            fileContent = File.ReadAllText(@".\Save.txt"); // сохранение
-            allInfo = fileContent;
-
             nikname = allInfo.Substring(35);
-            attempt = (allInfo.Count(c => c != '*') - 5) / 5;
+
+            attempt = (allInfo.Substring(0,35).Count(c => c != '*') - 5) / 5;
             string guessWordStr = allInfo.Substring(0, 5);
             exampleWord = guessWordStr.ToCharArray();
             char[] fieldChar = allInfo.ToCharArray();

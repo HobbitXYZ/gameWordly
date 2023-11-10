@@ -13,7 +13,7 @@ namespace Buissnes
         class Biz
         {
             public static string guessWordStr = " ";
-            static string nikname = " ";
+            static string nikname = "";
             static int score = 0;
             static char[] exampleWord = {' ', ' ', ' ', ' ', ' '}; //Пример слова, в будущем нужно будет сделать базу/найти словарь слов
             static char[,] field = new char[5, 6]; // Поле
@@ -259,7 +259,6 @@ namespace Buissnes
                 }
                 catch(KeyboardInterrupt) // Прерывание Сохранение работы программы
                 {
-                    instance.ScoreTable(nikname);
                     instance.SaveGame();
                     Console.Clear();
                     System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
