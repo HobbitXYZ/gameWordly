@@ -10,9 +10,9 @@ namespace Users
     class Program
     {
         static void Main(string[] args)
-        { 
-            Biz biz = new Biz();
-            GameState gm = new GameState();
+        {
+            Buissnes.Buissnes biz = new Buissnes.Buissnes();
+            Basa gm = new Basa();
             int action = 0;
 
             while (action != 3)

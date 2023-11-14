@@ -5,15 +5,12 @@ using Buissnes;
 
 namespace data
 {
-    public class GameState
+    public class Basa
     {
-        static Biz biz = new Biz();
+        static Buissnes.Buissnes biz = new Buissnes.Buissnes();
         string nikname = biz.GetNickname();
         public void ScoreTable(string nikname)
         {
-            Biz biz = new Biz();
-            nikname = biz.GetNickname();
-
             using (StreamWriter writer = new StreamWriter(@".\ScoreTable.txt", true))
             {
                 if(nikname != null)
@@ -46,10 +43,9 @@ namespace data
                 Console.WriteLine($"Никнейм: '{entry.Key}', Колиsчество угаданных слов: {entry.Value}");
             }  
         }
-        public void SaveGame()
+        public void SaveGame(string nikname)
         {
             char[,] field = biz.GetField();
-            nikname = biz.GetNickname();
             string guessWordStr = biz.GetGuessWordStr();
 
             using (StreamWriter writer = new StreamWriter(@".\Save.txt"))

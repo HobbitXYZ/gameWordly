@@ -9,7 +9,7 @@ using data;
 namespace Buissnes
 {
     public class KeyboardInterrupt : System.Exception { } 
-    class Biz
+    class Buissnes
     {
         public static string guessWordStr = " ";
         static string nikname = "";
@@ -145,7 +145,7 @@ namespace Buissnes
         public void User() // Условие победы
         {
             attempt = 0;
-            GameState gm = new GameState();
+            Basa gm = new Basa();
             try
             {
                 do
@@ -197,7 +197,7 @@ namespace Buissnes
             }
             catch(KeyboardInterrupt) // Прерывание Сохранение работы программы
             {
-            gm.SaveGame();
+            gm.SaveGame(nikname);
             Console.Clear();
             System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
             }
@@ -205,11 +205,11 @@ namespace Buissnes
         public void GL()
         {
             Console.Clear();
-            GameState instance = new GameState();
+            Basa instance = new Basa();
             try
             {
                 char[,] localField;
-                string nikname = "";
+
                 char[] userWordChar = {'*', '*', '*', '*', '*'};
                 
 
@@ -258,7 +258,7 @@ namespace Buissnes
             }
             catch(KeyboardInterrupt) // Прерывание Сохранение работы программы
             {
-                instance.SaveGame();
+                instance.SaveGame(nikname);
                 Console.Clear();
                 System.Console.WriteLine("Вы завершили вашу работу. Все данные сохранены!");
             }
