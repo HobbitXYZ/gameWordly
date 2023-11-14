@@ -1,10 +1,6 @@
 using System;
-using System.Linq;
-using System.ComponentModel;
-using System.IO;
 using System.Text;
-using System.Xml.Linq;
-using data;
+using Data;
 
 namespace Buissnes
 {

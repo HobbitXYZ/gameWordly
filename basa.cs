@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Buissnes;
 
-namespace data
+namespace Data
 {
     public class Basa
     {
